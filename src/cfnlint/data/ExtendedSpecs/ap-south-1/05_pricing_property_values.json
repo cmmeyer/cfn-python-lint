@@ -20,6 +20,12 @@
       "c5d.9xlarge",
       "c5d.large",
       "c5d.xlarge",
+      "c5n.18xlarge",
+      "c5n.2xlarge",
+      "c5n.4xlarge",
+      "c5n.9xlarge",
+      "c5n.large",
+      "c5n.xlarge",
       "d2.2xlarge",
       "d2.4xlarge",
       "d2.8xlarge",
@@ -110,7 +116,7 @@
   },
   {
     "op": "add",
-    "path": "/ValueTypes/AmazonMQHostInstanceType/AllowedValues",
+    "path": "/ValueTypes/AWS::AmazonMQ::Broker.HostInstanceType/AllowedValues",
     "value": [
       "mq.m4.large",
       "mq.m5.2xlarge",

@@ -50,6 +50,9 @@ region_map = {
     'Asia Pacific (Seoul)': 'ap-northeast-2',
     'AWS GovCloud (US)': 'us-gov-west-1',
     'US West (N. California)': 'us-west-1',
+    'China (Beijing)': 'cn-north-1',
+    'China (Ningxia)': 'cn-northwest-1',
+    'Middle East (Bahrain)': 'me-south-1',
 }
 
 session = boto3.session.Session()
@@ -311,7 +314,7 @@ def main():
         outputs[region] = []
 
     outputs = update_outputs('Ec2InstanceType', get_ec2_pricing(), outputs)
-    outputs = update_outputs('AmazonMQHostInstanceType', get_mq_pricing(), outputs)
+    outputs = update_outputs('AWS::AmazonMQ::Broker.HostInstanceType', get_mq_pricing(), outputs)
     outputs = update_outputs('RdsInstanceType', get_rds_pricing(), outputs)
     outputs = update_outputs('RedshiftInstanceType', get_redshift_pricing(), outputs)
     outputs = update_outputs('DAXInstanceType', get_dax_pricing(), outputs)

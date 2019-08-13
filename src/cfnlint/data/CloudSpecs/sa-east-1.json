@@ -1059,7 +1059,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApplicationAutoScalingPredefinedMetricSpecificationType"
+            "ValueType": "AWS::ApplicationAutoScaling::ScalingPolicy.PredefinedMetricSpecification.PredefinedMetricType"
           }
         },
         "ResourceLabel": {
@@ -1274,7 +1274,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleHookResult"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.DefaultResult"
           }
         },
         "HeartbeatTimeout": {
@@ -1295,7 +1295,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleTransition"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.LifecycleTransition"
           }
         },
         "NotificationMetadata": {
@@ -1668,7 +1668,7 @@
         "SecurityGroupIds": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-computeenvironment-computeresources.html#cfn-batch-computeenvironment-computeresources-securitygroupids",
           "PrimitiveItemType": "String",
-          "Required": true,
+          "Required": false,
           "Type": "List",
           "UpdateType": "Immutable",
           "Value": {
@@ -1764,6 +1764,12 @@
           "Required": false,
           "UpdateType": "Mutable"
         },
+        "LinuxParameters": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-linuxparameters",
+          "Required": false,
+          "Type": "LinuxParameters",
+          "UpdateType": "Mutable"
+        },
         "Memory": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-memory",
           "PrimitiveType": "Integer",
@@ -1824,6 +1830,30 @@
         }
       }
     },
+    "AWS::Batch::JobDefinition.Device": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-device.html",
+      "Properties": {
+        "ContainerPath": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-device.html#cfn-batch-jobdefinition-device-containerpath",
+          "PrimitiveType": "String",
+          "Required": false,
+          "UpdateType": "Mutable"
+        },
+        "HostPath": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-device.html#cfn-batch-jobdefinition-device-hostpath",
+          "PrimitiveType": "String",
+          "Required": false,
+          "UpdateType": "Mutable"
+        },
+        "Permissions": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-device.html#cfn-batch-jobdefinition-device-permissions",
+          "PrimitiveItemType": "String",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
     "AWS::Batch::JobDefinition.Environment": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-environment.html",
       "Properties": {
@@ -1837,6 +1867,18 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-environment.html#cfn-batch-jobdefinition-environment-value",
           "PrimitiveType": "String",
           "Required": false,
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::Batch::JobDefinition.LinuxParameters": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-linuxparameters.html",
+      "Properties": {
+        "Devices": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-linuxparameters.html#cfn-batch-jobdefinition-containerproperties-linuxparameters-devices",
+          "ItemType": "Device",
+          "Required": false,
+          "Type": "List",
           "UpdateType": "Mutable"
         }
       }
@@ -4369,6 +4411,40 @@
         },
         "MatchEquals": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-webhook-webhookfilterrule.html#cfn-codepipeline-webhook-webhookfilterrule-matchequals",
+          "PrimitiveType": "String",
+          "Required": false,
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::CodeStar::GitHubRepository.Code": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codestar-githubrepository-code.html",
+      "Properties": {
+        "S3": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codestar-githubrepository-code.html#cfn-codestar-githubrepository-code-s3",
+          "Required": true,
+          "Type": "S3",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::CodeStar::GitHubRepository.S3": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codestar-githubrepository-s3.html",
+      "Properties": {
+        "Bucket": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codestar-githubrepository-s3.html#cfn-codestar-githubrepository-s3-bucket",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Mutable"
+        },
+        "Key": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codestar-githubrepository-s3.html#cfn-codestar-githubrepository-s3-key",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Mutable"
+        },
+        "ObjectVersion": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codestar-githubrepository-s3.html#cfn-codestar-githubrepository-s3-objectversion",
           "PrimitiveType": "String",
           "Required": false,
           "UpdateType": "Mutable"
@@ -15977,7 +16053,7 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "4.2.0",
+  "ResourceSpecificationVersion": "5.0.0",
   "ResourceTypes": {
     "AWS::ApiGateway::Account": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html",
@@ -16107,7 +16183,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApiGatewayAuthorizerType"
+            "ValueType": "AWS::ApiGateway::Authorizer.Type"
           }
         }
       }
@@ -16313,7 +16389,7 @@
           "Required": true,
           "UpdateType": "Immutable",
           "Value": {
-            "ValueType": "ApiGatewayResponeType"
+            "ValueType": "AWS::ApiGateway::GatewayResponse.ResponeType"
           }
         },
         "RestApiId": {
@@ -16537,7 +16613,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApiGatewatRestApiKeySourceType"
+            "ValueType": "AWS::ApiGateway::RestApi.ApiKeySourceType"
           }
         },
         "BinaryMediaTypes": {
@@ -16762,7 +16838,7 @@
           "Required": true,
           "UpdateType": "Immutable",
           "Value": {
-            "ValueType": "ApiGatewayUsagePlanKeyType"
+            "ValueType": "AWS::ApiGateway::UsagePlanKey.KeyType"
           }
         },
         "UsagePlanId": {
@@ -17401,7 +17477,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApplicationAutoScalingPolicyType"
+            "ValueType": "AWS::ApplicationAutoScaling::ScalingPolicy.PolicyType"
           }
         },
         "ResourceId": {
@@ -17487,7 +17563,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingGroupHealthCheckType"
+            "ValueType": "AWS::AutoScaling::AutoScalingGroup.HealthCheckType"
           }
         },
         "InstanceId": {
@@ -17772,7 +17848,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleHookResult"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.DefaultResult"
           }
         },
         "HeartbeatTimeout": {
@@ -17793,7 +17869,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleTransition"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.LifecycleTransition"
           }
         },
         "NotificationMetadata": {
@@ -17825,7 +17901,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingPolicyAdjustmentType"
+            "ValueType": "AWS::AutoScaling::ScalingPolicy.AdjustmentType"
           }
         },
         "AutoScalingGroupName": {
@@ -17852,7 +17928,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingPolicyMetricAggregationType"
+            "ValueType": "AWS::AutoScaling::ScalingPolicy.MetricAggregationType"
           }
         },
         "MinAdjustmentMagnitude": {
@@ -17867,7 +17943,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingPolicyType"
+            "ValueType": "AWS::AutoScaling::ScalingPolicy.PolicyType"
           }
         },
         "ScalingAdjustment": {
@@ -19069,6 +19145,53 @@
         }
       }
     },
+    "AWS::CodeStar::GitHubRepository": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html",
+      "Properties": {
+        "Code": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html#cfn-codestar-githubrepository-code",
+          "Required": false,
+          "Type": "Code",
+          "UpdateType": "Mutable"
+        },
+        "EnableIssues": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html#cfn-codestar-githubrepository-enableissues",
+          "PrimitiveType": "Boolean",
+          "Required": false,
+          "UpdateType": "Mutable"
+        },
+        "IsPrivate": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html#cfn-codestar-githubrepository-isprivate",
+          "PrimitiveType": "Boolean",
+          "Required": false,
+          "UpdateType": "Mutable"
+        },
+        "RepositoryAccessToken": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html#cfn-codestar-githubrepository-repositoryaccesstoken",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Mutable"
+        },
+        "RepositoryDescription": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html#cfn-codestar-githubrepository-repositorydescription",
+          "PrimitiveType": "String",
+          "Required": false,
+          "UpdateType": "Mutable"
+        },
+        "RepositoryName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html#cfn-codestar-githubrepository-repositoryname",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Mutable"
+        },
+        "RepositoryOwner": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codestar-githubrepository.html#cfn-codestar-githubrepository-repositoryowner",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Mutable"
+        }
+      }
+    },
     "AWS::Config::ConfigRule": {
       "Attributes": {
         "Arn": {
@@ -20220,7 +20343,7 @@
           "Required": false,
           "UpdateType": "Conditional",
           "Value": {
-            "ValueType": "AllocationId"
+            "ValueType": "AWS::EC2::EIP.AllocationId"
           }
         },
         "EIP": {
@@ -20386,7 +20509,7 @@
           "Required": false,
           "UpdateType": "Conditional",
           "Value": {
-            "ValueType": "Affinity"
+            "ValueType": "AWS::EC2::Instance.Affinity"
           }
         },
         "AvailabilityZone": {
@@ -23694,7 +23817,10 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html#cfn-elasticloadbalancingv2-targetgroup-healthythresholdcount",
           "PrimitiveType": "Integer",
           "Required": false,
-          "UpdateType": "Mutable"
+          "UpdateType": "Mutable",
+          "Value": {
+            "ValueType": "TargetGroupHealthyThresholdCount"
+          }
         },
         "Matcher": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html#cfn-elasticloadbalancingv2-targetgroup-matcher",
@@ -25061,14 +25187,6 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html#cfn-iam-user-policies",
           "DuplicatesAllowed": true,
           "ItemType": "Policy",
-          "Required": false,
-          "Type": "List",
-          "UpdateType": "Mutable"
-        },
-        "Tags": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html#cfn-iam-user-tags",
-          "DuplicatesAllowed": true,
-          "ItemType": "Tag",
           "Required": false,
           "Type": "List",
           "UpdateType": "Mutable"
@@ -29762,6 +29880,239 @@
         }
       }
     },
+    "AWS::WAFRegional::ByteMatchSet": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-bytematchset.html",
+      "Properties": {
+        "ByteMatchTuples": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-bytematchset.html#cfn-wafregional-bytematchset-bytematchtuples",
+          "ItemType": "ByteMatchTuple",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        },
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-bytematchset.html#cfn-wafregional-bytematchset-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::GeoMatchSet": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-geomatchset.html",
+      "Properties": {
+        "GeoMatchConstraints": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-geomatchset.html#cfn-wafregional-geomatchset-geomatchconstraints",
+          "ItemType": "GeoMatchConstraint",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        },
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-geomatchset.html#cfn-wafregional-geomatchset-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::IPSet": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ipset.html",
+      "Properties": {
+        "IPSetDescriptors": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ipset.html#cfn-wafregional-ipset-ipsetdescriptors",
+          "ItemType": "IPSetDescriptor",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        },
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ipset.html#cfn-wafregional-ipset-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::RateBasedRule": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ratebasedrule.html",
+      "Properties": {
+        "MatchPredicates": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ratebasedrule.html#cfn-wafregional-ratebasedrule-matchpredicates",
+          "ItemType": "Predicate",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        },
+        "MetricName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ratebasedrule.html#cfn-wafregional-ratebasedrule-metricname",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ratebasedrule.html#cfn-wafregional-ratebasedrule-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "RateKey": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ratebasedrule.html#cfn-wafregional-ratebasedrule-ratekey",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "RateLimit": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-ratebasedrule.html#cfn-wafregional-ratebasedrule-ratelimit",
+          "PrimitiveType": "Integer",
+          "Required": true,
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::RegexPatternSet": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-regexpatternset.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-regexpatternset.html#cfn-wafregional-regexpatternset-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "RegexPatternStrings": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-regexpatternset.html#cfn-wafregional-regexpatternset-regexpatternstrings",
+          "PrimitiveItemType": "String",
+          "Required": true,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::Rule": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-rule.html",
+      "Properties": {
+        "MetricName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-rule.html#cfn-wafregional-rule-metricname",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-rule.html#cfn-wafregional-rule-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "Predicates": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-rule.html#cfn-wafregional-rule-predicates",
+          "ItemType": "Predicate",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::SizeConstraintSet": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sizeconstraintset.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sizeconstraintset.html#cfn-wafregional-sizeconstraintset-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "SizeConstraints": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sizeconstraintset.html#cfn-wafregional-sizeconstraintset-sizeconstraints",
+          "ItemType": "SizeConstraint",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::SqlInjectionMatchSet": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sqlinjectionmatchset.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sqlinjectionmatchset.html#cfn-wafregional-sqlinjectionmatchset-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "SqlInjectionMatchTuples": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-sqlinjectionmatchset.html#cfn-wafregional-sqlinjectionmatchset-sqlinjectionmatchtuples",
+          "ItemType": "SqlInjectionMatchTuple",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::WebACL": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webacl.html",
+      "Properties": {
+        "DefaultAction": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webacl.html#cfn-wafregional-webacl-defaultaction",
+          "Required": true,
+          "Type": "Action",
+          "UpdateType": "Mutable"
+        },
+        "MetricName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webacl.html#cfn-wafregional-webacl-metricname",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webacl.html#cfn-wafregional-webacl-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "Rules": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webacl.html#cfn-wafregional-webacl-rules",
+          "ItemType": "Rule",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::WebACLAssociation": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webaclassociation.html",
+      "Properties": {
+        "ResourceArn": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webaclassociation.html#cfn-wafregional-webaclassociation-resourcearn",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "WebACLId": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-webaclassociation.html#cfn-wafregional-webaclassociation-webaclid",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        }
+      }
+    },
+    "AWS::WAFRegional::XssMatchSet": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html#cfn-wafregional-xssmatchset-name",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Immutable"
+        },
+        "XssMatchTuples": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafregional-xssmatchset.html#cfn-wafregional-xssmatchset-xssmatchtuples",
+          "ItemType": "XssMatchTuple",
+          "Required": false,
+          "Type": "List",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
     "AWS::WorkSpaces::Workspace": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-workspaces-workspace.html",
       "Properties": {
@@ -29842,34 +30193,18 @@
     }
   },
   "ValueTypes": {
-    "Affinity": {
-      "AllowedValues": [
-        "default",
-        "host"
-      ]
-    },
-    "AllocationId": {
-      "GetAtt": {
-        "AWS::EC2::EIP": "AllocationId"
-      },
-      "Ref": {
-        "Parameters": [
-          "String"
-        ]
-      }
-    },
-    "AmazonMQDeploymentMode": {
+    "AWS::AmazonMQ::Broker.DeploymentMode": {
       "AllowedValues": [
         "ACTIVE_STANDBY_MULTI_AZ",
         "SINGLE_INSTANCE"
       ]
     },
-    "AmazonMQEngineType": {
+    "AWS::AmazonMQ::Broker.EngineType": {
       "AllowedValues": [
         "ACTIVEMQ"
       ]
     },
-    "AmazonMQEngineVersion": {
+    "AWS::AmazonMQ::Broker.EngineVersion": {
       "AllowedValues": [
         "5.15.0",
         "5.15.6",
@@ -29877,27 +30212,21 @@
         "5.15.9"
       ]
     },
-    "AmazonMQHostInstanceType": {
+    "AWS::AmazonMQ::Broker.HostInstanceType": {
       "Ref": {
         "Parameters": [
           "String"
         ]
       }
     },
-    "ApiGatewatRestApiKeySourceType": {
-      "AllowedValues": [
-        "AUTHORIZER",
-        "HEADER"
-      ]
-    },
-    "ApiGatewayAuthorizerType": {
+    "AWS::ApiGateway::Authorizer.Type": {
       "AllowedValues": [
         "COGNITO_USER_POOLS",
         "REQUEST",
         "TOKEN"
       ]
     },
-    "ApiGatewayResponeType": {
+    "AWS::ApiGateway::GatewayResponse.ResponeType": {
       "AllowedValues": [
         "ACCESS_DENIED",
         "API_CONFIGURATION_ERROR",
@@ -29921,12 +30250,18 @@
         "UNSUPPORTED_MEDIA_TYPE"
       ]
     },
-    "ApiGatewayUsagePlanKeyType": {
+    "AWS::ApiGateway::RestApi.ApiKeySourceType": {
+      "AllowedValues": [
+        "AUTHORIZER",
+        "HEADER"
+      ]
+    },
+    "AWS::ApiGateway::UsagePlanKey.KeyType": {
       "AllowedValues": [
         "API_KEY"
       ]
     },
-    "AppSyncDataSourceType": {
+    "AWS::AppSync::DataSource.Type": {
       "AllowedValues": [
         "AMAZON_DYNAMODB",
         "AMAZON_ELASTICSEARCH",
@@ -29936,7 +30271,7 @@
         "RELATIONAL_DATABASE"
       ]
     },
-    "AppSyncGraphQLApiAuthType": {
+    "AWS::AppSync::GraphQLApi.AuthType": {
       "AllowedValues": [
         "AMAZON_COGNITO_USER_POOLS",
         "API_KEY",
@@ -29944,19 +30279,19 @@
         "OPENID_CONNECT"
       ]
     },
-    "AppSyncResolverKind": {
+    "AWS::AppSync::Resolver.Kind": {
       "AllowedValues": [
         "PIPELINE",
         "UNIT"
       ]
     },
-    "ApplicationAutoScalingPolicyType": {
+    "AWS::ApplicationAutoScaling::ScalingPolicy.PolicyType": {
       "AllowedValues": [
         "StepScaling",
         "TargetTrackingScaling"
       ]
     },
-    "ApplicationAutoScalingPredefinedMetricSpecificationType": {
+    "AWS::ApplicationAutoScaling::ScalingPolicy.PredefinedMetricSpecification.PredefinedMetricType": {
       "AllowedValues": [
         "ALBRequestCountPerTarget",
         "DynamoDBReadCapacityUtilization",
@@ -29971,43 +30306,85 @@
         "SageMakerVariantInvocationsPerInstance"
       ]
     },
-    "AutoScalingGroupHealthCheckType": {
+    "AWS::AutoScaling::AutoScalingGroup.HealthCheckType": {
       "AllowedValues": [
         "EC2",
         "ELB"
       ]
     },
-    "AutoScalingLifecycleHookResult": {
+    "AWS::AutoScaling::LifecycleHook.DefaultResult": {
       "AllowedValues": [
         "ABANDON",
         "CONTINUE"
       ]
     },
-    "AutoScalingLifecycleTransition": {
+    "AWS::AutoScaling::LifecycleHook.LifecycleTransition": {
       "AllowedValues": [
         "autoscaling:EC2_INSTANCE_LAUNCHING",
         "autoscaling:EC2_INSTANCE_TERMINATING"
       ]
     },
-    "AutoScalingPolicyAdjustmentType": {
+    "AWS::AutoScaling::ScalingPolicy.AdjustmentType": {
       "AllowedValues": [
         "ChangeInCapacity",
         "ExactCapacity",
         "PercentChangeInCapacity"
       ]
     },
-    "AutoScalingPolicyMetricAggregationType": {
+    "AWS::AutoScaling::ScalingPolicy.MetricAggregationType": {
       "AllowedValues": [
         "Average",
         "Maximum",
         "Minimum"
       ]
     },
-    "AutoScalingPolicyType": {
+    "AWS::AutoScaling::ScalingPolicy.PolicyType": {
       "AllowedValues": [
         "SimpleScaling",
         "StepScaling",
         "TargetTrackingScaling"
+      ]
+    },
+    "AWS::Backup::BackupPlan.Id": {
+      "GetAtt": {
+        "AWS::Backup::BackupPlan": "BackupPlanId"
+      },
+      "Ref": {
+        "Parameters": [
+          "String"
+        ],
+        "Resources": [
+          "AWS::Backup::BackupPlan"
+        ]
+      }
+    },
+    "AWS::Backup::BackupVault.BackupVaultName": {
+      "GetAtt": {
+        "AWS::Backup::BackupVault": "BackupVaultName"
+      },
+      "Ref": {
+        "Parameters": [
+          "String"
+        ],
+        "Resources": [
+          "AWS::Backup::BackupVault"
+        ]
+      }
+    },
+    "AWS::EC2::EIP.AllocationId": {
+      "GetAtt": {
+        "AWS::EC2::EIP": "AllocationId"
+      },
+      "Ref": {
+        "Parameters": [
+          "String"
+        ]
+      }
+    },
+    "AWS::EC2::Instance.Affinity": {
+      "AllowedValues": [
+        "default",
+        "host"
       ]
     },
     "AvailabilityZone": {
@@ -30029,32 +30406,6 @@
         "Parameters": [
           "Strings",
           "AvailabilityZones"
-        ]
-      }
-    },
-    "BackupPlanId": {
-      "GetAtt": {
-        "AWS::Backup::BackupPlan": "BackupPlanId"
-      },
-      "Ref": {
-        "Parameters": [
-          "String"
-        ],
-        "Resources": [
-          "AWS::Backup::BackupPlan"
-        ]
-      }
-    },
-    "BackupVaultName": {
-      "GetAtt": {
-        "AWS::Backup::BackupVault": "BackupVaultName"
-      },
-      "Ref": {
-        "Parameters": [
-          "String"
-        ],
-        "Resources": [
-          "AWS::Backup::BackupVault"
         ]
       }
     },
@@ -31497,11 +31848,6 @@
     },
     "IamPolicyName": {
       "AllowedPatternRegex": "^[a-zA-Z0-9+=,.@\\-_]+$",
-      "Ref": {
-        "Parameters": [
-          "String"
-        ]
-      },
       "StringMax": 128,
       "StringMin": 1
     },
@@ -32253,7 +32599,11 @@
       }
     },
     "TargetGroupHealthCheckTimeoutSeconds": {
-      "NumberMax": 60,
+      "NumberMax": 120,
+      "NumberMin": 2
+    },
+    "TargetGroupHealthyThresholdCount": {
+      "NumberMax": 10,
       "NumberMin": 2
     },
     "TransitGatewayEnabled": {

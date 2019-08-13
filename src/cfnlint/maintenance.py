@@ -36,6 +36,8 @@ SPEC_REGIONS = {
     'ap-southeast-1': 'https://doigdx0kgq9el.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
     'ap-southeast-2': 'https://d2stg8d246z9di.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
     'ca-central-1': 'https://d2s8ygphhesbe7.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
+    'cn-north-1': 'https://s3.cn-north-1.amazonaws.com.cn/cfn-resource-specifications-cn-north-1-prod/latest/CloudFormationResourceSpecification.json',
+    'cn-northwest-1': 'https://s3.cn-northwest-1.amazonaws.com.cn/cfn-resource-specifications-cn-northwest-1-prod/latest/CloudFormationResourceSpecification.json',
     'eu-central-1': 'https://d1mta8qj7i28i2.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
     'eu-north-1': 'https://diy8iv58sj6ba.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
     'eu-west-1': 'https://d3teyb21fexa9r.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
@@ -44,10 +46,10 @@ SPEC_REGIONS = {
     'sa-east-1': 'https://d3c9jyj3w509b0.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
     'us-east-1': 'https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
     'us-east-2': 'https://dnwj8swjjbsbt.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
+    'us-gov-east-1': 'https://s3.us-gov-east-1.amazonaws.com/cfn-resource-specifications-us-gov-east-1-prod/latest/CloudFormationResourceSpecification.json',
+    'us-gov-west-1': 'https://s3.us-gov-west-1.amazonaws.com/cfn-resource-specifications-us-gov-west-1-prod/latest/CloudFormationResourceSpecification.json',
     'us-west-1': 'https://d68hl49wbnanq.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
     'us-west-2': 'https://d201a2mn26r7lk.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json',
-    'us-gov-east-1': 'https://s3.us-gov-east-1.amazonaws.com/cfn-resource-specifications-us-gov-east-1-prod/latest/CloudFormationResourceSpecification.json',
-    'us-gov-west-1': 'https://s3.us-gov-west-1.amazonaws.com/cfn-resource-specifications-us-gov-west-1-prod/latest/CloudFormationResourceSpecification.json'
 }
 
 
@@ -156,11 +158,12 @@ def patch_spec(content, region):
     LOGGER.info('Patching spec file for region "%s"', region)
 
     append_dir = os.path.join(os.path.dirname(__file__), 'data', 'ExtendedSpecs', region)
-    for _, _, filenames in os.walk(append_dir):
+    for dirpath, _, filenames in os.walk(append_dir):
         filenames.sort()
         for filename in fnmatch.filter(filenames, '*.json'):
-            LOGGER.info('Processing %s (%s)', filename, region)
-            all_patches = jsonpatch.JsonPatch(cfnlint.helpers.load_resources('data/ExtendedSpecs/{}/{}'.format(region, filename)))
+            file_path = os.path.join(dirpath, filename).replace(append_dir, '')
+            LOGGER.info('Processing %s%s', region, file_path)
+            all_patches = jsonpatch.JsonPatch(cfnlint.helpers.load_resources('data/ExtendedSpecs/{}{}'.format(region, file_path)))
 
             # Process the generic patches 1 by 1 so we can "ignore" failed ones
             for all_patch in all_patches:

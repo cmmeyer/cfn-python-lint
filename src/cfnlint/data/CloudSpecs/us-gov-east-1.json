@@ -1059,7 +1059,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApplicationAutoScalingPredefinedMetricSpecificationType"
+            "ValueType": "AWS::ApplicationAutoScaling::ScalingPolicy.PredefinedMetricSpecification.PredefinedMetricType"
           }
         },
         "ResourceLabel": {
@@ -1274,7 +1274,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleHookResult"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.DefaultResult"
           }
         },
         "HeartbeatTimeout": {
@@ -1295,7 +1295,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleTransition"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.LifecycleTransition"
           }
         },
         "NotificationMetadata": {
@@ -10490,7 +10490,7 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "4.2.0",
+  "ResourceSpecificationVersion": "5.0.0",
   "ResourceTypes": {
     "AWS::ApiGateway::Account": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-account.html",
@@ -10620,7 +10620,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApiGatewayAuthorizerType"
+            "ValueType": "AWS::ApiGateway::Authorizer.Type"
           }
         }
       }
@@ -10826,7 +10826,7 @@
           "Required": true,
           "UpdateType": "Immutable",
           "Value": {
-            "ValueType": "ApiGatewayResponeType"
+            "ValueType": "AWS::ApiGateway::GatewayResponse.ResponeType"
           }
         },
         "RestApiId": {
@@ -11050,7 +11050,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApiGatewatRestApiKeySourceType"
+            "ValueType": "AWS::ApiGateway::RestApi.ApiKeySourceType"
           }
         },
         "BinaryMediaTypes": {
@@ -11275,7 +11275,7 @@
           "Required": true,
           "UpdateType": "Immutable",
           "Value": {
-            "ValueType": "ApiGatewayUsagePlanKeyType"
+            "ValueType": "AWS::ApiGateway::UsagePlanKey.KeyType"
           }
         },
         "UsagePlanId": {
@@ -11890,7 +11890,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "ApplicationAutoScalingPolicyType"
+            "ValueType": "AWS::ApplicationAutoScaling::ScalingPolicy.PolicyType"
           }
         },
         "ResourceId": {
@@ -12005,7 +12005,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingGroupHealthCheckType"
+            "ValueType": "AWS::AutoScaling::AutoScalingGroup.HealthCheckType"
           }
         },
         "InstanceId": {
@@ -12290,7 +12290,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleHookResult"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.DefaultResult"
           }
         },
         "HeartbeatTimeout": {
@@ -12311,7 +12311,7 @@
           "Required": true,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingLifecycleTransition"
+            "ValueType": "AWS::AutoScaling::LifecycleHook.LifecycleTransition"
           }
         },
         "NotificationMetadata": {
@@ -12343,7 +12343,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingPolicyAdjustmentType"
+            "ValueType": "AWS::AutoScaling::ScalingPolicy.AdjustmentType"
           }
         },
         "AutoScalingGroupName": {
@@ -12370,7 +12370,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingPolicyMetricAggregationType"
+            "ValueType": "AWS::AutoScaling::ScalingPolicy.MetricAggregationType"
           }
         },
         "MinAdjustmentMagnitude": {
@@ -12385,7 +12385,7 @@
           "Required": false,
           "UpdateType": "Mutable",
           "Value": {
-            "ValueType": "AutoScalingPolicyType"
+            "ValueType": "AWS::AutoScaling::ScalingPolicy.PolicyType"
           }
         },
         "ScalingAdjustment": {
@@ -14116,7 +14116,7 @@
           "Required": false,
           "UpdateType": "Conditional",
           "Value": {
-            "ValueType": "AllocationId"
+            "ValueType": "AWS::EC2::EIP.AllocationId"
           }
         },
         "EIP": {
@@ -14282,7 +14282,7 @@
           "Required": false,
           "UpdateType": "Conditional",
           "Value": {
-            "ValueType": "Affinity"
+            "ValueType": "AWS::EC2::Instance.Affinity"
           }
         },
         "AvailabilityZone": {
@@ -17590,7 +17590,10 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html#cfn-elasticloadbalancingv2-targetgroup-healthythresholdcount",
           "PrimitiveType": "Integer",
           "Required": false,
-          "UpdateType": "Mutable"
+          "UpdateType": "Mutable",
+          "Value": {
+            "ValueType": "TargetGroupHealthyThresholdCount"
+          }
         },
         "Matcher": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html#cfn-elasticloadbalancingv2-targetgroup-matcher",
@@ -18506,14 +18509,6 @@
           "PrimitiveType": "String",
           "Required": false,
           "UpdateType": "Immutable"
-        },
-        "Tags": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html#cfn-iam-role-tags",
-          "DuplicatesAllowed": true,
-          "ItemType": "Tag",
-          "Required": false,
-          "Type": "List",
-          "UpdateType": "Mutable"
         }
       }
     },
@@ -18574,14 +18569,6 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html#cfn-iam-user-policies",
           "DuplicatesAllowed": true,
           "ItemType": "Policy",
-          "Required": false,
-          "Type": "List",
-          "UpdateType": "Mutable"
-        },
-        "Tags": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html#cfn-iam-user-tags",
-          "DuplicatesAllowed": true,
-          "ItemType": "Tag",
           "Required": false,
           "Type": "List",
           "UpdateType": "Mutable"
@@ -21082,34 +21069,18 @@
     }
   },
   "ValueTypes": {
-    "Affinity": {
-      "AllowedValues": [
-        "default",
-        "host"
-      ]
-    },
-    "AllocationId": {
-      "GetAtt": {
-        "AWS::EC2::EIP": "AllocationId"
-      },
-      "Ref": {
-        "Parameters": [
-          "String"
-        ]
-      }
-    },
-    "AmazonMQDeploymentMode": {
+    "AWS::AmazonMQ::Broker.DeploymentMode": {
       "AllowedValues": [
         "ACTIVE_STANDBY_MULTI_AZ",
         "SINGLE_INSTANCE"
       ]
     },
-    "AmazonMQEngineType": {
+    "AWS::AmazonMQ::Broker.EngineType": {
       "AllowedValues": [
         "ACTIVEMQ"
       ]
     },
-    "AmazonMQEngineVersion": {
+    "AWS::AmazonMQ::Broker.EngineVersion": {
       "AllowedValues": [
         "5.15.0",
         "5.15.6",
@@ -21117,27 +21088,21 @@
         "5.15.9"
       ]
     },
-    "AmazonMQHostInstanceType": {
+    "AWS::AmazonMQ::Broker.HostInstanceType": {
       "Ref": {
         "Parameters": [
           "String"
         ]
       }
     },
-    "ApiGatewatRestApiKeySourceType": {
-      "AllowedValues": [
-        "AUTHORIZER",
-        "HEADER"
-      ]
-    },
-    "ApiGatewayAuthorizerType": {
+    "AWS::ApiGateway::Authorizer.Type": {
       "AllowedValues": [
         "COGNITO_USER_POOLS",
         "REQUEST",
         "TOKEN"
       ]
     },
-    "ApiGatewayResponeType": {
+    "AWS::ApiGateway::GatewayResponse.ResponeType": {
       "AllowedValues": [
         "ACCESS_DENIED",
         "API_CONFIGURATION_ERROR",
@@ -21161,12 +21126,18 @@
         "UNSUPPORTED_MEDIA_TYPE"
       ]
     },
-    "ApiGatewayUsagePlanKeyType": {
+    "AWS::ApiGateway::RestApi.ApiKeySourceType": {
+      "AllowedValues": [
+        "AUTHORIZER",
+        "HEADER"
+      ]
+    },
+    "AWS::ApiGateway::UsagePlanKey.KeyType": {
       "AllowedValues": [
         "API_KEY"
       ]
     },
-    "AppSyncDataSourceType": {
+    "AWS::AppSync::DataSource.Type": {
       "AllowedValues": [
         "AMAZON_DYNAMODB",
         "AMAZON_ELASTICSEARCH",
@@ -21176,7 +21147,7 @@
         "RELATIONAL_DATABASE"
       ]
     },
-    "AppSyncGraphQLApiAuthType": {
+    "AWS::AppSync::GraphQLApi.AuthType": {
       "AllowedValues": [
         "AMAZON_COGNITO_USER_POOLS",
         "API_KEY",
@@ -21184,19 +21155,19 @@
         "OPENID_CONNECT"
       ]
     },
-    "AppSyncResolverKind": {
+    "AWS::AppSync::Resolver.Kind": {
       "AllowedValues": [
         "PIPELINE",
         "UNIT"
       ]
     },
-    "ApplicationAutoScalingPolicyType": {
+    "AWS::ApplicationAutoScaling::ScalingPolicy.PolicyType": {
       "AllowedValues": [
         "StepScaling",
         "TargetTrackingScaling"
       ]
     },
-    "ApplicationAutoScalingPredefinedMetricSpecificationType": {
+    "AWS::ApplicationAutoScaling::ScalingPolicy.PredefinedMetricSpecification.PredefinedMetricType": {
       "AllowedValues": [
         "ALBRequestCountPerTarget",
         "DynamoDBReadCapacityUtilization",
@@ -21211,43 +21182,85 @@
         "SageMakerVariantInvocationsPerInstance"
       ]
     },
-    "AutoScalingGroupHealthCheckType": {
+    "AWS::AutoScaling::AutoScalingGroup.HealthCheckType": {
       "AllowedValues": [
         "EC2",
         "ELB"
       ]
     },
-    "AutoScalingLifecycleHookResult": {
+    "AWS::AutoScaling::LifecycleHook.DefaultResult": {
       "AllowedValues": [
         "ABANDON",
         "CONTINUE"
       ]
     },
-    "AutoScalingLifecycleTransition": {
+    "AWS::AutoScaling::LifecycleHook.LifecycleTransition": {
       "AllowedValues": [
         "autoscaling:EC2_INSTANCE_LAUNCHING",
         "autoscaling:EC2_INSTANCE_TERMINATING"
       ]
     },
-    "AutoScalingPolicyAdjustmentType": {
+    "AWS::AutoScaling::ScalingPolicy.AdjustmentType": {
       "AllowedValues": [
         "ChangeInCapacity",
         "ExactCapacity",
         "PercentChangeInCapacity"
       ]
     },
-    "AutoScalingPolicyMetricAggregationType": {
+    "AWS::AutoScaling::ScalingPolicy.MetricAggregationType": {
       "AllowedValues": [
         "Average",
         "Maximum",
         "Minimum"
       ]
     },
-    "AutoScalingPolicyType": {
+    "AWS::AutoScaling::ScalingPolicy.PolicyType": {
       "AllowedValues": [
         "SimpleScaling",
         "StepScaling",
         "TargetTrackingScaling"
+      ]
+    },
+    "AWS::Backup::BackupPlan.Id": {
+      "GetAtt": {
+        "AWS::Backup::BackupPlan": "BackupPlanId"
+      },
+      "Ref": {
+        "Parameters": [
+          "String"
+        ],
+        "Resources": [
+          "AWS::Backup::BackupPlan"
+        ]
+      }
+    },
+    "AWS::Backup::BackupVault.BackupVaultName": {
+      "GetAtt": {
+        "AWS::Backup::BackupVault": "BackupVaultName"
+      },
+      "Ref": {
+        "Parameters": [
+          "String"
+        ],
+        "Resources": [
+          "AWS::Backup::BackupVault"
+        ]
+      }
+    },
+    "AWS::EC2::EIP.AllocationId": {
+      "GetAtt": {
+        "AWS::EC2::EIP": "AllocationId"
+      },
+      "Ref": {
+        "Parameters": [
+          "String"
+        ]
+      }
+    },
+    "AWS::EC2::Instance.Affinity": {
+      "AllowedValues": [
+        "default",
+        "host"
       ]
     },
     "AvailabilityZone": {
@@ -21269,32 +21282,6 @@
         "Parameters": [
           "Strings",
           "AvailabilityZones"
-        ]
-      }
-    },
-    "BackupPlanId": {
-      "GetAtt": {
-        "AWS::Backup::BackupPlan": "BackupPlanId"
-      },
-      "Ref": {
-        "Parameters": [
-          "String"
-        ],
-        "Resources": [
-          "AWS::Backup::BackupPlan"
-        ]
-      }
-    },
-    "BackupVaultName": {
-      "GetAtt": {
-        "AWS::Backup::BackupVault": "BackupVaultName"
-      },
-      "Ref": {
-        "Parameters": [
-          "String"
-        ],
-        "Resources": [
-          "AWS::Backup::BackupVault"
         ]
       }
     },
@@ -22418,6 +22405,14 @@
         "m5.large",
         "m5.metal",
         "m5.xlarge",
+        "m5a.12xlarge",
+        "m5a.16xlarge",
+        "m5a.24xlarge",
+        "m5a.2xlarge",
+        "m5a.4xlarge",
+        "m5a.8xlarge",
+        "m5a.large",
+        "m5a.xlarge",
         "m5d.12xlarge",
         "m5d.16xlarge",
         "m5d.24xlarge",
@@ -22436,6 +22431,14 @@
         "r5.large",
         "r5.metal",
         "r5.xlarge",
+        "r5a.12xlarge",
+        "r5a.16xlarge",
+        "r5a.24xlarge",
+        "r5a.2xlarge",
+        "r5a.4xlarge",
+        "r5a.8xlarge",
+        "r5a.large",
+        "r5a.xlarge",
         "r5d.12xlarge",
         "r5d.16xlarge",
         "r5d.24xlarge",
@@ -22452,6 +22455,13 @@
         "t3.nano",
         "t3.small",
         "t3.xlarge",
+        "t3a.2xlarge",
+        "t3a.large",
+        "t3a.medium",
+        "t3a.micro",
+        "t3a.nano",
+        "t3a.small",
+        "t3a.xlarge",
         "x1.16xlarge",
         "x1.32xlarge",
         "x1e.16xlarge",
@@ -22711,11 +22721,6 @@
     },
     "IamPolicyName": {
       "AllowedPatternRegex": "^[a-zA-Z0-9+=,.@\\-_]+$",
-      "Ref": {
-        "Parameters": [
-          "String"
-        ]
-      },
       "StringMax": 128,
       "StringMin": 1
     },
@@ -23009,6 +23014,10 @@
         "db.r4.8xlarge",
         "db.r4.large",
         "db.r4.xlarge",
+        "db.r5.2xlarge",
+        "db.r5.4xlarge",
+        "db.r5.large",
+        "db.r5.xlarge",
         "db.t2.2xlarge",
         "db.t2.large",
         "db.t2.medium",
@@ -23437,7 +23446,11 @@
       }
     },
     "TargetGroupHealthCheckTimeoutSeconds": {
-      "NumberMax": 60,
+      "NumberMax": 120,
+      "NumberMin": 2
+    },
+    "TargetGroupHealthyThresholdCount": {
+      "NumberMax": 10,
       "NumberMin": 2
     },
     "TransitGatewayEnabled": {
